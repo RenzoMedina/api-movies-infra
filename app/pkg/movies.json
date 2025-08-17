@@ -1,0 +1,22 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "name": "Los supercampeones",
+      "description": "Este una pelicula demo",
+      "category": [
+        "Animación",
+        "Familiar"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Los supercampeones",
+      "description": "Este una pelicula demo",
+      "category": [
+        "Animación",
+        "Familiar"
+      ]
+    }
+  ]
+}
