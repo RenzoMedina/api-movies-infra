@@ -2,7 +2,6 @@ package main
 
 import (
 	"app-demo/pkg"
-	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
@@ -10,8 +9,10 @@ import (
 func main() {
 
 	e := echo.New()
+	e.Static("/public", "public")
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Welcome to the Movie API - by Renzo Medina")
+		return c.File("public/index.html")
+		/* return c.String(http.StatusOK, "Welcome to the Movie API - by Renzo Medina") */
 	})
 	e.GET("/movies", func(c echo.Context) error {
 		return c.JSON(200, pkg.GetMovies())

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema VoD - Landing Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">MiVoD</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#features">Características</a></li>
+          <li class="nav-item"><a class="nav-link" href="#planes">Planes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="#peliculas">Películas</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-dark text-light text-center p-5">
+    <div class="container">
+      <h1 class="display-4">Disfruta tu sistema de Video on Demand</h1>
+      <p class="lead">Accede a miles de películas y series en cualquier dispositivo, cuando quieras.</p>
+      <a href="#planes" class="btn btn-primary btn-lg">Empieza Ahora</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-5">
+    <div class="container text-center">
+      <h2 class="mb-4">Características Principales</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card p-3">
+            <h5>📺 Contenido Ilimitado</h5>
+            <p>Acceso a miles de películas, series y documentales sin restricciones.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3">
+            <h5>⚡ Streaming Rápido</h5>
+            <p>Disfruta de videos en alta calidad sin interrupciones.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3">
+            <h5>📱 Multi-dispositivo</h5>
+            <p>Mira desde tu TV, celular, tablet o computadora.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Peliuclas -->
+  <section id="peliuclas" class="py-5">
+    <div class="container text-center">
+      <h1 class="display-4">Catálogo</h1>
+      <p class="lead">Disfruta de todo nuestro contenido bajo demanda</p>
+      <section class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Películas Disponibles</h2>
+      <div id="movies-container" class="row g-4">
+        <!-- Aquí se cargan las películas dinámicamente -->
+      </div>
+    </div>
+  </section>
+
+    </div>
+  </section>
+
+
+  <!-- Planes -->
+  <section id="planes" class="bg-light py-5">
+    <div class="container text-center">
+      <h2 class="mb-4">Elige tu Plan</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card shadow p-3">
+            <h4>Básico</h4>
+            <p class="text-muted">Ideal para comenzar</p>
+            <h3>$5/mes</h3>
+            <button class="btn btn-outline-primary">Suscribirse</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow p-3 border-primary">
+            <h4>Estándar</h4>
+            <p class="text-muted">Calidad HD incluida</p>
+            <h3>$10/mes</h3>
+            <button class="btn btn-primary">Más Popular</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow p-3">
+            <h4>Premium</h4>
+            <p class="text-muted">4K y dispositivos ilimitados</p>
+            <h3>$15/mes</h3>
+            <button class="btn btn-outline-primary">Suscribirse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-5">
+    <div class="container text-center">
+      <h2>Contacto</h2>
+      <p>¿Tienes preguntas? Escríbenos y te responderemos a la brevedad.</p>
+      <form class="row g-3 justify-content-center">
+        <div class="col-md-4">
+          <input type="text" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="col-md-4">
+          <input type="email" class="form-control" placeholder="Email">
+        </div>
+        <div class="col-md-8">
+          <textarea class="form-control" rows="3" placeholder="Tu mensaje"></textarea>
+        </div>
+        <div class="col-md-8">
+          <button class="btn btn-primary w-100">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light text-center py-3">
+    <p class="mb-0">&copy; 2025 MiVoD. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+  <script>
+    async function loadMovies() {
+      try {
+        // Cambia la URL si tu API no está en el mismo dominio
+        const res = await fetch("/movies");
+        const data = await res.json();
+
+        const moviesContainer = document.getElementById("movies-container");
+        moviesContainer.innerHTML = "";
+
+        data.movies.forEach(movie => {
+          const col = document.createElement("div");
+          col.className = "col-md-4";
+
+          col.innerHTML = `
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">${movie.name}</h5>
+                <p class="card-text">${movie.description}</p>
+                <span class="badge bg-secondary">${movie.category.join(", ")}</span>
+              </div>
+            </div>
+          `;
+          moviesContainer.appendChild(col);
+        });
+
+      } catch (error) {
+        console.error("Error cargando películas:", error);
+      }
+    }
+
+    // Cargar al iniciar
+    loadMovies();
+  </script>
+</body>
+</html>
