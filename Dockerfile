@@ -1,6 +1,8 @@
-FROM golang:1.21-alpine as builder
+FROM golang:1.23-alpine as builder
 WORKDIR /app
-COPY . .
+COPY app/go.mod app/go.sum ./
+RUN go mod download
+COPY /app .
 RUN go build -o main .
 RUN chmod +x ./main
 

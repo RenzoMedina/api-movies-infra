@@ -25,7 +25,6 @@ app-demo/
 
 ```
 
-
 # 📥 Instalación
 
 ```bash
