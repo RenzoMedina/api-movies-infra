@@ -20,7 +20,10 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: echo "AWS credentials configured"
 
-      - name: Terraform Init & Apply
-        run: |
-          terraform init
-          terraform apply -auto-approve
+      - name: Terraform Init
+        run: terraform init
+        working-directory: infra/
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        working-directory: infra/
