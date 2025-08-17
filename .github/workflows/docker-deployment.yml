@@ -22,7 +22,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: ./app
-          file: ./app/Dockerfile
+          context: .
+          file: Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/api-movies-infra:1.0.${{ github.run_number }}
