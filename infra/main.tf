@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket = "renzo-state-demo"
+    key    = "infra/terraform.tfstate"
+    region = var.aws_region
+    encrypt = true
+  }
+}
+
 provider "aws" {
   region = var.aws_region
 }
