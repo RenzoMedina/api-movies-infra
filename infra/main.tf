@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket = "renzo-state-demo"
     key    = "infra/terraform.tfstate"
-    region = var.aws_region
+    region = "us-east-1"
     encrypt = true
   }
 }
